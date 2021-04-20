@@ -1,0 +1,28 @@
+-- CRIAR BASE DE DADOS 
+create database db_rh;
+
+-- ADICIONAR VALORES AO DB 
+
+insert into tb_funcionarios (nome, idade, cargo, salario)
+	values ("Carlos", 25, "Analista", 2100)
+insert into tb_funcionarios (nome, idade, cargo, salario) 
+	values ("Ana", 22, "Analista", 2100);
+insert into tb_funcionarios (nome, idade, cargo, salario) 
+	values ("Pietra", 26, "Coordenadora", 6000);
+insert into tb_funcionarios (nome, idade, cargo, salario) 
+	values ("Joao", 28, "Supervisor", 5000);
+insert into tb_funcionarios (nome, idade, cargo, salario) 
+	values ("Thiago", 17, "Jovem Aprendiz", 1000);
+
+
+-- PESQUISAR VALORES AO DB 
+select * from  tb_funcionarios
+
+-- PESQUISAR POR VALORES DETERMINADOS
+select * from  tb_funcionarios where salario > 2000
+
+select * from  tb_funcionarios where salario < 2000
+
+-- ATUALIZAR VALORES AO DB
+update tb_funcionarios set idade = 18 
+	where id = 5
