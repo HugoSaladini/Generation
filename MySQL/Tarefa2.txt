@@ -1,0 +1,184 @@
+create database db_generation_game_online;
+
+use db_generation_game_online;
+
+create table tb_classe (
+id bigint auto_increment,
+descricao varchar(255) not null,
+ativo boolean,
+primary key (id)
+);
+
+insert tb_classe (descricao, ativo) values ("Arqueiro", true);
+insert tb_classe (descricao, ativo) values ("Guerreiro", true);
+insert tb_classe (descricao, ativo) values ("Mago", true);
+insert tb_classe (descricao, ativo) values ("Estrategista", true);
+insert tb_classe (descricao, ativo) values ("Ogro", true);
+
+create table tb_personagem (
+id bigint auto_increment,
+nome varchar(255) not null,
+preco int not null,
+qtProduto int not null,
+classe_id bigint,
+primary key (id),
+foreign key (classe_id) references tb_classe (id)
+);
+
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Carlos", 3000, 2000, 1);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Joana, 5000, 4000, 2);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Pedrom", 2000, 3000, 3);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Stevam", 1000, 3000, 4);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Jhef", 5000, 500, 5);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Analice", 3000, 2500, 1);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Pantera", 4000, 3000, 2);
+insert tb_personagem (nome, poderAK, poderDF, classe_id) values ("Dom", 2000, 2000, 3);
+
+
+
+
+select * from tb_personagem where poderAK > 2000;
+
+select * from tb_personagem where poderD between 1000 and 2000;
+
+select * from tb_personagem where nome like "%C%"
+
+==============================================================================================================================
+
+create database db_cidade_das_carnes;
+
+use db_cidade_das_carnes;
+
+create table tb_categoria (
+id bigint auto_increment,
+descricao varchar(255) not null,
+ativo boolean,
+primary key (id)
+);
+
+insert tb_categoria (descricao, ativo) values ("Bovino", true);
+insert tb_categoria (descricao, ativo) values ("Suino", true);
+insert tb_categoria (descricao, ativo) values ("Ave", true);
+insert tb_categoria (descricao, ativo) values ("Pertence feijoada", true);
+insert tb_categoria (descricao, ativo) values ("Saco Carvão", true);
+
+create table tb_produto (
+id bigint auto_increment,
+nome varchar(255) not null,
+preco decimal not null,
+qtProduto int not null,
+categoria_id bigint,
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Asa", 14.99, 10, 3);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Picanha", 25.99, 10, 1);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Cupim", 30.99, 10, 1);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Bacon", 14.99, 10, 2);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Coxa de Frango", 20.99, 10, 3);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Peito de Frango", 20.99, 10, 3);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Panceta", 35.99, 10, 2);
+insert tb_produto (nome, preco, qtProduto, categoria_id) values ("Coxao Mole", 14.99, 10, 1);
+
+select * from tb_produto;
+
+select * from tb_produto where preco between 3 and 60;
+
+select * from tb_produto where preco > 50;
+
+select * from tb_produto where nome like"%C%"
+
+
+=========================================================================================================
+create database db_pizzaria_legal;
+
+use db_pizzaria_legal;
+
+create table tb_produto (
+id bigint auto_increment,
+descricao varchar(255) not null,
+ativo boolean,
+primary key (id)
+);
+
+insert tb_produto (descricao, ativo) values ("Congelada", true);
+insert tb_produto (descricao, ativo) values ("Borda Normal", true);
+insert tb_produto (descricao, ativo) values ("Borda Recheada", true);
+insert tb_produto (descricao, ativo) values ("Doce", true);
+insert tb_produto (descricao, ativo) values ("Big", true);
+
+create table tb_pizza (
+id bigint auto_increment,
+nome varchar(255) not null,
+preco decimal not null,
+qtEstoque int not null,
+produto_id bigint,
+primary key (id),
+foreign key (produto_id) references tb_produto (id)
+);
+
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Brigadeiro", 30.99, 10, 4);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Especial", 50.99, 10, 5);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Frango", 25.99, 10, 2);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Quatro Queijos", 25.99, 10, 1);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Calabresa", 30.99, 10, 2);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Frango Catupiri", 40.99, 10, 3);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Bacon", 30.99, 10, 1);
+insert tb_pizza (nome, preco, qtEstoque, produto_id) values ("Veg", 25.99, 10, 3);
+
+select * from tb_pizza where preco > 45;
+
+select * from tb_pizza where preco between 29 and 60;
+
+select * from tb_pizza where nome like"%C%"
+
+=========================================================================================================================
+create database db_farmacia_do_bem;
+
+use db_farmacia_do_bem;
+
+create table tb_categoria (
+id bigint auto_increment,
+descricao varchar(255) not null,
+ativo boolean,
+primary key (id)
+);
+
+insert tb_categoria (descricao, ativo) values ("Medicamentos", true);
+insert tb_categoria (descricao, ativo) values ("Higiene", true);
+insert tb_categoria (descricao, ativo) values ("Cabelo", true);
+insert tb_categoria (descricao, ativo) values ("Primeiros Socorros", true);
+insert tb_categoria (descricao, ativo) values ("Utencilios", true);
+
+create table tb_produto (
+id bigint auto_increment,
+nome varchar(255) not null,
+preco decimal not null,
+qtEstoque int not null,
+categoria_id bigint,
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Dipirona", 10.99, 10, 1);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Benegripe", 3.99, 10, 1);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Gase", 11.99, 10, 4);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("BandAid", 25.99, 10, 4);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Alcool", 20.99, 10, 2);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Desedorante", 15.99, 10, 2);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Cortador de unha", 10.99, 10, 5);
+insert tb_produto (nome, preco, qtEstoque, produto_id) values ("Shampoo", 25.99, 10, 3);
+
+select * from tb_produto where preco > 50;
+
+select * from tb_produto where preco between 3 and 60;
+
+select * from tb_produto where nome like"%B%"
+
+
+
+
+
+
+
